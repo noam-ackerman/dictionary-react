@@ -23,7 +23,7 @@ function handleResponse (response){
     }
     return (<div className="wordSearch">
         <form onSubmit={search}>
-            <input type="search" placeholder="Search for a Word..." size="30" autoComplete="off" className="word-input" onChange={handleInputChange}/> {""}
+            <input type="search" size="30" autoComplete="off" className="word-input" onChange={handleInputChange}/> {""}
             <input type="submit" value="Search" className="search-button"></input>
         </form>
     </div>);
