@@ -11,6 +11,7 @@ export default function Dictionary () {
 
     function search (e) {
         e.preventDefault ();
+        alert (wordInput);
     }
     return (<div className="wordSearch">
         <form onSubmit={search}>
