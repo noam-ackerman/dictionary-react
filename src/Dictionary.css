@@ -10,11 +10,7 @@ form {
        font-weight: 700;
 }
 
-.word-input::placeholder {
-    color:#FE8924;
- opacity: 80%;
- font-weight: normal;
-}
+
 
 .search-button {
         background: yellow;
