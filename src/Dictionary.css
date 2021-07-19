@@ -10,7 +10,18 @@ form {
        font-weight: 700;
 }
 
-
+.word-input::-webkit-input-placeholder {
+  color: #FE8924;
+}
+.word-input::-moz-placeholder { 
+      color: #FE8924;
+}
+.word-input:-ms-input-placeholder { 
+    color: #FE8924;
+}
+.word-input:-moz-placeholder { 
+    color: #FE8924;
+}
 
 .search-button {
         background: yellow;
