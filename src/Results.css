@@ -82,4 +82,5 @@ text-decoration: underline;
 .photos img {
     margin-bottom: 15px;
     border: 0.5px solid rgb(81, 165, 37, 0.8) ;
+     box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.15);
 }
