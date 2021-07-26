@@ -1,5 +1,6 @@
 import React from 'react';
 import Meaning from "./Meaning";
+import Photos from "./Photos";
  import "./Results.css";
 
 export default function Results (props) {
@@ -15,6 +16,7 @@ export default function Results (props) {
             <Meaning meaning={meaning}/>
             </div>);
     })}
+    <Photos photos={props.photos}/>
     </div>
     );
     } else {
