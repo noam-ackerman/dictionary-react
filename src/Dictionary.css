@@ -1,38 +1,38 @@
 form {
-    margin-top: 16px;
+  margin-top: 16px;
 }
 .word-input {
-    background: yellow;
-       color:#FE8924;
-    padding: 5px;
-   border: 0.5px solid #51A525 ;
-    margin:0 5px;
-       font-weight: 700;
-      
+  background: yellow;
+  color: #fe8924;
+  padding: 5px;
+  border: 0.5px solid #51a525;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
+  margin: 0 5px;
+  font-weight: 700;
 }
 
 .word-input::-webkit-input-placeholder {
-  color: #FE8924;
+  color: #fe8924;
 }
-.word-input::-moz-placeholder { 
-      color: #FE8924;
+.word-input::-moz-placeholder {
+  color: #fe8924;
 }
-.word-input:-ms-input-placeholder { 
-    color: #FE8924;
+.word-input:-ms-input-placeholder {
+  color: #fe8924;
 }
-.word-input:-moz-placeholder { 
-    color: #FE8924;
+.word-input:-moz-placeholder {
+  color: #fe8924;
 }
 
 .search-button {
-        background: yellow;
-    padding: 5px;
-    border: 0.5px solid #51A525;
-    
-     color: #FE8924;
-       font-weight: 700;
-       transition: all 150ms ease-in-out;
+  background: yellow;
+  padding: 5px;
+  border: 0.5px solid #51a525;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
+  color: #fe8924;
+  font-weight: 700;
+  transition: all 150ms ease-in-out;
 }
-.search-button:hover{
-background: #51A525;
+.search-button:hover {
+  background: #51a525;
 }
