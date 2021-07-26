@@ -1,21 +1,19 @@
 import Dictionary from "./Dictionary";
 import Header from "./img/dictionaryHeader.png";
-import './App.css';
-
-
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <div className="container">
-      <header>
-      <img src={Header} alt="header"></img>
-      </header>
-<main>
-  <Dictionary/>
-</main>
-  <footer className="fixed-bottom">
-     <a
+        <header>
+          <img src={Header} alt="header"></img>
+        </header>
+        <main>
+          <Dictionary />
+        </main>
+        <footer className="fixed-bottom">
+          <a
             href="https://github.com/noam-ackerman/dictionary-react"
             target="_blank"
             rel="noreferrer"
@@ -32,8 +30,8 @@ function App() {
           >
             Noam Ackerman
           </a>
-  </footer>
-        </div>
+        </footer>
+      </div>
     </div>
   );
 }

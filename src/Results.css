@@ -1,86 +1,82 @@
 .results {
-    display: block;
-    margin: 0 auto;
-width: 65%;
-text-align: start;
-margin-top: 50px;
-margin-bottom: 80px;
-font-family: 'Roboto', sans-serif;
-background:yellow ;
- border: 0.5px solid rgb(81, 165, 37, 0.8) ;
- padding: 15px 25px;
+  display: block;
+  margin: 0 auto;
+  width: 65%;
+  text-align: start;
+  margin-top: 50px;
+  margin-bottom: 80px;
+  font-family: "Roboto", sans-serif;
+  background: yellow;
+  border: 0.5px solid rgb(81, 165, 37, 0.8);
+  padding: 15px 25px;
   box-shadow: 8px -9px 0.5px rgb(81, 165, 37, 0.8);
 }
 
 .word {
-    color:#FE8924;
-    font-size: 33px;
-    font-weight: bold;
-    text-transform: uppercase;
-
+  color: #fe8924;
+  font-size: 33px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .phonetics {
- font-size: 20px;
-position: relative;
-top: -5px;
+  font-size: 20px;
+  position: relative;
+  top: -5px;
   font-weight: 500;
 }
 
 .audio {
-    color:#51A525;
-     font-size: 18px;
-     margin-right: 7px;
-     transition: all 150ms ease-in-out;
+  color: #51a525;
+  font-size: 18px;
+  margin-right: 7px;
+  transition: all 150ms ease-in-out;
 }
 
 .audio:hover {
-    color: #FE8924;
+  color: #fe8924;
 }
 .partOfSpeech {
-       color:#FE8924;
-        font-size: 19px;
-        font-weight: 500;
-        margin-top: 15px;
-        margin-bottom: 8px;
-
+  color: #fe8924;
+  font-size: 19px;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 8px;
 }
 
-
 .definition {
-    font-weight: 500;
-    margin-bottom: 3px;
-    font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 3px;
+  font-size: 15px;
 }
 
 .example {
-margin-bottom: 20px;
-color:#4a4b4c;
-font-size: 14px;
+  margin-bottom: 20px;
+  color: #4a4b4c;
+  font-size: 14px;
 }
 
 .synonymsTitle {
-    font-size: 13px;
-    font-weight: 500;
-text-decoration: underline;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: underline;
 }
 
 .synonymsList {
-      margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .synonym {
-    font-size: 13px;
-  
+  font-size: 13px;
 }
 
 .photos {
-    margin-top: 40px;
-    margin-bottom: 10px;
+  margin-top: 40px;
+  margin-bottom: 10px;
 }
 
 .photos img {
-    margin-bottom: 15px;
-    border: 0.5px solid rgb(81, 165, 37, 0.8) ;
-     box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 15px;
+  border: 0.5px solid rgb(81, 165, 37, 0.8);
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.15);
 }
