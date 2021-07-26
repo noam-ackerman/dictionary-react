@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <div className="container">
       <header>
-      <img src={Header} alt="header" width="750"></img>
+      <img src={Header} alt="header"></img>
       </header>
 <main>
   <Dictionary/>

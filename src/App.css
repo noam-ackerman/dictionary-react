@@ -4,7 +4,9 @@
   margin: 0 auto;
 }
 
-
+img {
+  max-width: 58%;
+}
 header {
   margin-top: 50px;
 }
