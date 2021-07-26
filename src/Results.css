@@ -14,7 +14,7 @@ background:yellow ;
 
 .word {
     color:#FE8924;
-    font-size: 40px;
+    font-size: 33px;
     font-weight: bold;
     text-transform: uppercase;
 
@@ -23,13 +23,22 @@ background:yellow ;
 .phonetics {
  font-size: 20px;
 position: relative;
-top: -10px;
+top: -5px;
   font-weight: 500;
 }
 
+.audio {
+    color:#51A525;
+     font-size: 18px;
+     margin-right: 7px;
+}
+
+.audio:hover {
+    color: #FE8924;
+}
 .partOfSpeech {
        color:#FE8924;
-        font-size: 20px;
+        font-size: 19px;
         font-weight: 500;
         margin-top: 15px;
         margin-bottom: 4px;
@@ -40,7 +49,7 @@ top: -10px;
 .definition {
     font-weight: 500;
     margin-bottom: 3px;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .example {
@@ -50,7 +59,7 @@ font-size: 14px;
 }
 
 .synonymsTitle {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
 text-decoration: underline;
 }

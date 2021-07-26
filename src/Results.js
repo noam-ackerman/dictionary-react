@@ -7,7 +7,9 @@ export default function Results (props) {
            return (
 <div className="results">
     <div className="word">{props.data.word}</div>
-    <div className="phonetics">{props.data.phonetics[0].text}</div>
+  <div className="phonetics"> 
+  <a className="audio" href={props.data.phonetics[0].audio} target="_blank" rel="noreferrer"><i class="fas fa-volume-up"></i></a><span className="text">{props.data.phonetics[0].text}</span>
+  </div>
     {props.data.meanings.map(function(meaning,index) {
         return ( <div key={index}>
             <Meaning meaning={meaning}/>
