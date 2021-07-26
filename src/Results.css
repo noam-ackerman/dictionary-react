@@ -1,0 +1,48 @@
+.results {
+    display: block;
+    margin: 0 auto;
+width: 70%;
+text-align: start;
+margin-top: 50px;
+margin-bottom: 80px;
+font-family: 'Roboto', sans-serif;
+background:yellow ;
+ border: 3px solid #79a526 ;
+ padding: 15px 25px;
+}
+
+.word {
+    color:#FE8924;
+    font-size: 45px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+
+.phonetics {
+ font-size: 20px;
+position: relative;
+top: -10px;
+  font-weight: 500;
+}
+
+.partOfSpeech {
+       color:#FE8924;
+        font-size: 22px;
+        font-weight: 500;
+        margin-top: 15px;
+        margin-bottom: 4px;
+
+}
+
+.definition {
+    font-weight: 500;
+    margin-bottom: 3px;
+    font-size: 17px;
+}
+
+.example {
+margin-bottom: 20px;
+opacity: 90%;
+font-size: 15px;
+}
