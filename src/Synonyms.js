@@ -2,7 +2,7 @@ import React from "react";
 import "./Results.css";
 
 export default function Synonyms(props) {
-  if (props.synonyms) {
+  if (props.synonyms.length > 0) {
     return (
       <div>
         <div className="synonymsTitle">Similar:</div>
