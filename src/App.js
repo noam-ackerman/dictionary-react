@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <div className="container">
         <header>
-          <img src={Header} alt="header"></img>
+          <img src={Header} alt="header" className="img-fluid"></img>
         </header>
         <main>
           <Dictionary />
