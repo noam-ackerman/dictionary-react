@@ -44,7 +44,6 @@ export default function Dictionary() {
       <input
         type="search"
         placeholder="Type a Word..."
-        size="30"
         autoComplete="off"
         className="word-input"
         onChange={handleInputChange}

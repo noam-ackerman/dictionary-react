@@ -5,7 +5,7 @@
 }
 
 header img {
-  width: 58%;
+  width: min(800px, 90%);
 }
 header {
   margin-top: 50px;
