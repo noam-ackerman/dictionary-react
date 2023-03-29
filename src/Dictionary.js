@@ -12,8 +12,8 @@ export default function Dictionary() {
     setResults(response.data[0]);
   }
 
-  function handlePexelsResponse(response) {
-    setPhotos(response.data.photos);
+  function handlePexelsResponse(data) {
+    setPhotos(data.photos);
   }
 
   function handleInputChange(e) {
@@ -21,18 +21,21 @@ export default function Dictionary() {
   }
 
   function search() {
-    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${wordInput}`;
-    axios.get(apiUrl).then(handleResponse);
-
-    let pexelsApiKey =
-      "563492ad6f91700001000001bd6661cbf4d4406a8bf68f3e850e1144";
+    let pexelsApiKey = "Wdrg3QnNJuL73cSqE7AfFqjsYG03OhFDFyoWZVFwvRjeBbl5X09pOyzX";
     let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${wordInput}&per_page=6`;
-    axios
-      .get(pexelsApiUrl, {
-        headers: { Authorization: `Bearer ${pexelsApiKey}` },
+    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${wordInput}`;
+    axios.get(apiUrl).then(handleResponse).then(() => {
+      fetch(pexelsApiUrl, {
+        headers: {
+          Authorization: pexelsApiKey
+        }
+      }).then(resp => {
+      return resp.json()
+      }).then(data => {
+        handlePexelsResponse(data)
       })
-      .then(handlePexelsResponse);
-  }
+    });
+   }
 
   function handleSubmit(event) {
     event.preventDefault();
