@@ -42,3 +42,10 @@ form {
 .search-button:hover {
   background: #51a525;
 }
+
+.error {
+  color: #fe8924;
+  margin: 20px 0;
+  font-weight: 500;
+  font-size: 20px;
+}

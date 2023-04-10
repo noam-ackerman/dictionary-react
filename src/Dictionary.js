@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import Results from "./Results";
 import "./Dictionary.css";
 
+
 export default function Dictionary() {
-  let [wordInput, setWordInput] = useState("");
-  let [results, setResults] = useState(null);
-  let [photos, setPhotos] = useState(null);
+  const [wordInput, setWordInput] = useState("");
+  const [results, setResults] = useState(null);
+  const [photos, setPhotos] = useState(null);
+
 
   function handleResponse(response) {
-    setResults(response[0]);
+    setResults(response[0] ? response[0] : null);
   }
 
   function handlePexelsResponse(response) {
@@ -35,7 +37,7 @@ export default function Dictionary() {
       }).then(data => {
         handlePexelsResponse(data)
       })
-    }).catch(error => console.log("there is an error"));
+    })
    }
 
   function handleSubmit(event) {
@@ -56,6 +58,9 @@ export default function Dictionary() {
       <input type="submit" value="Search" className="search-button"></input>
     </form>
   );
+
+
+
 
   return (
     <div className="wordSearch">
