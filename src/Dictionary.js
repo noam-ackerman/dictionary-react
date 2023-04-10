@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import Results from "./Results";
 import "./Dictionary.css";
 
@@ -9,11 +8,11 @@ export default function Dictionary() {
   let [photos, setPhotos] = useState(null);
 
   function handleResponse(response) {
-    setResults(response.data[0]);
+    setResults(response[0]);
   }
 
-  function handlePexelsResponse(data) {
-    setPhotos(data.photos);
+  function handlePexelsResponse(response) {
+    setPhotos(response.photos);
   }
 
   function handleInputChange(e) {
@@ -24,7 +23,9 @@ export default function Dictionary() {
     let pexelsApiKey = "Wdrg3QnNJuL73cSqE7AfFqjsYG03OhFDFyoWZVFwvRjeBbl5X09pOyzX";
     let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${wordInput}&per_page=6`;
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${wordInput}`;
-    axios.get(apiUrl).then(handleResponse).then(() => {
+    fetch(apiUrl).then(resp => {return resp.json()}).then(data => {
+      handleResponse(data)
+    }).then(() => {
       fetch(pexelsApiUrl, {
         headers: {
           Authorization: pexelsApiKey
@@ -34,7 +35,7 @@ export default function Dictionary() {
       }).then(data => {
         handlePexelsResponse(data)
       })
-    });
+    }).catch(error => console.log("there is an error"));
    }
 
   function handleSubmit(event) {
