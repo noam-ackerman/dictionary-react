@@ -1,17 +1,29 @@
 import React, { useState } from "react";
 import Results from "./Results";
 import "./Dictionary.css";
+import { Oval } from 'react-loader-spinner'
 
+function reducer(state, action) {
+  switch (action.type) {
+    case "pending" : {
+      return {status:"pending", results:null}
+    }
+    case "resolved" : {
+      return {status: "resolved",results: action.data}
+    }
+    case "rejected" : {
+     return {status: "rejected",results: null}
+    }
+     default: {
+      throw new Error(`Unhandled action type: ${action.type}`)
+    }
+  }
+}
 
 export default function Dictionary() {
   const [wordInput, setWordInput] = useState("");
-  const [results, setResults] = useState(null);
+  const [state, dispatch] = React.useReducer(reducer, {status: "idle",results: null});
   const [photos, setPhotos] = useState(null);
-
-
-  function handleResponse(response) {
-    setResults(response[0] ? response[0] : null);
-  }
 
   function handlePexelsResponse(response) {
     setPhotos(response.photos);
@@ -25,8 +37,14 @@ export default function Dictionary() {
     let pexelsApiKey = "Wdrg3QnNJuL73cSqE7AfFqjsYG03OhFDFyoWZVFwvRjeBbl5X09pOyzX";
     let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${wordInput}&per_page=6`;
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${wordInput}`;
-    fetch(apiUrl).then(resp => {return resp.json()}).then(data => {
-      handleResponse(data)
+    dispatch({type: "pending"})
+    fetch(apiUrl).then(resp => {
+      if(resp.status !== 200) {
+        throw new Error()
+      }
+      return resp.json()
+    }).then(data => {
+      dispatch({type: "resolved", data: data[0]})
     }).then(() => {
       fetch(pexelsApiUrl, {
         headers: {
@@ -37,6 +55,8 @@ export default function Dictionary() {
       }).then(data => {
         handlePexelsResponse(data)
       })
+    }).catch(() => {
+      dispatch({type: "rejected"})
     })
    }
 
@@ -65,7 +85,28 @@ export default function Dictionary() {
   return (
     <div className="wordSearch">
       {form}
-      <Results data={results} photos={photos} />
+      {state.status === "pending" ?
+       <div className="loader">
+        <Oval
+        height={100}
+        width={100}
+        color="#fe8924"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+        ariaLabel='oval-loading'
+        secondaryColor="#fe8924"
+        strokeWidth={2}
+        strokeWidthSecondary={2}
+
+      />
+       </div>
+      : state.status === "resolved" ?
+       <Results data={state.results} photos={photos} />
+      : state.status === "rejected" ?
+       <div className="error-message"> Sorry, could not find results! please try a different query. </div>
+      : null
+      }    
     </div>
   );
 }

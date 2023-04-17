@@ -9,14 +9,18 @@ export default function Results(props) {
       <div className="results">
         <div className="word">{props.data.word}</div>
         <div className="phonetics">
-          <a
-            className="audio"
-            href={props.data.phonetics[0].audio}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <i className="fas fa-volume-up"></i>
-          </a>
+          {props.data.phonetics[0].audio && props.data.phonetics[0].audio !== "" ?
+            <a
+              className="audio"
+              href={props.data.phonetics[0].audio}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i className="fas fa-volume-up"></i>
+            </a>
+           : 
+            null
+          }
           <span className="text">{props.data.phonetics[0].text}</span>
         </div>
         {props.data.meanings.map((meaning, index) => {

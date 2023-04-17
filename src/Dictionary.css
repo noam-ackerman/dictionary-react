@@ -43,9 +43,15 @@ form {
   background: #51a525;
 }
 
-.error {
-  color: #fe8924;
-  margin: 20px 0;
+.error-message {
+  color: #000;
+  margin: 30px 0;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 17px;
+}
+
+.loader {
+  margin: 70px auto 50px;
+  display:block;
+  width:fit-content;
 }
