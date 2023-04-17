@@ -9,7 +9,7 @@ export default function Results(props) {
       <div className="results">
         <div className="word">{props.data.word}</div>
         <div className="phonetics">
-          {props.data.phonetics[0].audio && props.data.phonetics[0].audio !== "" ?
+          {props.data.phonetics[0]?.audio && props.data.phonetics[0]?.audio !== "" ?
             <a
               className="audio"
               href={props.data.phonetics[0].audio}
@@ -21,9 +21,9 @@ export default function Results(props) {
            : 
             null
           }
-          <span className="text">{props.data.phonetics[0].text}</span>
+          <span className="text">{props.data.phonetics[0]?.text}</span>
         </div>
-        {props.data.meanings.map((meaning, index) => {
+        {props.data.meanings?.map((meaning, index) => {
           return (
             <div key={index}>
               <Meaning meaning={meaning} />

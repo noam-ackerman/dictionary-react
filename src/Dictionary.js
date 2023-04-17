@@ -24,6 +24,7 @@ export default function Dictionary() {
   const [wordInput, setWordInput] = useState("");
   const [state, dispatch] = React.useReducer(reducer, {status: "idle",results: null});
   const [photos, setPhotos] = useState(null);
+  console.log(wordInput.length === 0)
 
   function handlePexelsResponse(response) {
     setPhotos(response.photos);
@@ -44,6 +45,7 @@ export default function Dictionary() {
       }
       return resp.json()
     }).then(data => {
+      console.log(data[0])
       dispatch({type: "resolved", data: data[0]})
     }).then(() => {
       fetch(pexelsApiUrl, {
@@ -75,7 +77,7 @@ export default function Dictionary() {
         onChange={handleInputChange}
       />{" "}
       {""}
-      <input type="submit" value="Search" className="search-button"></input>
+      <button type="submit" className="search-button" disabled={wordInput.length === 0}>Search</button>
     </form>
   );
 
