@@ -24,7 +24,7 @@ export default function Dictionary() {
   const [wordInput, setWordInput] = useState("");
   const [state, dispatch] = React.useReducer(reducer, {status: "idle",results: null});
   const [photos, setPhotos] = useState(null);
-  console.log(wordInput.length === 0)
+
 
   function handlePexelsResponse(response) {
     setPhotos(response.photos);
