@@ -8,13 +8,14 @@ form {
 .word-input {
   background: yellow;
   color: #fe8924;
-  padding: 5px;
+  padding:7px 10px;
   border: 0.5px solid #51a525;
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
   margin: 0 5px;
   font-weight: 700;
   flex: 1;
   max-width: 100%;
+  -webkit-appearance: none;
 }
 
 .word-input::-webkit-input-placeholder {
@@ -32,7 +33,7 @@ form {
 
 .search-button {
   background: yellow;
-  padding: 5px;
+  padding:7px 10px;
   border: 0.5px solid #51a525;
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
   color: #fe8924;
