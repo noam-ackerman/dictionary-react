@@ -3,7 +3,7 @@ form {
   margin-top: 16px;
   display: flex;
   justify-content: space-evenly;
-  width: min(340px, 60%);
+  width: min(340px, 88%);
 }
 .word-input {
   background: yellow;
