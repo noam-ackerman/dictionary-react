@@ -6,13 +6,13 @@ import { Oval } from 'react-loader-spinner'
 function reducer(state, action) {
   switch (action.type) {
     case "pending" : {
-      return {status:"pending", results:null}
+      return {status:"pending", results:null, error:null}
     }
     case "resolved" : {
-      return {status: "resolved",results: action.data}
+      return {status: "resolved",results: action.data, error:null}
     }
     case "rejected" : {
-     return {status: "rejected",results: null}
+     return {status: "rejected",results: null, error:action.error}
     }
      default: {
       throw new Error(`Unhandled action type: ${action.type}`)
@@ -22,7 +22,7 @@ function reducer(state, action) {
 
 export default function Dictionary() {
   const [wordInput, setWordInput] = useState("");
-  const [state, dispatch] = React.useReducer(reducer, {status: "idle",results: null});
+  const [state, dispatch] = React.useReducer(reducer, {status: "idle",results: null, error:null});
   const [photos, setPhotos] = useState(null);
 
 
@@ -39,26 +39,22 @@ export default function Dictionary() {
     let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${wordInput}&per_page=6`;
     let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${wordInput}`;
     dispatch({type: "pending"})
-    fetch(apiUrl).then(resp => {
-      if(resp.status !== 200) {
-        throw new Error()
+    fetch(apiUrl).then(async resp => {
+      const data = await resp.json()
+      if (resp.ok) {
+        dispatch({type: "resolved", data: data[0]})
+        fetch(pexelsApiUrl, {
+          headers: {
+            Authorization: pexelsApiKey
+          }
+        }).then(response => {
+        return response.json()
+        }).then(respData => {
+          handlePexelsResponse(respData)
+        })
+      } else {
+        dispatch({type: "rejected", error:data})
       }
-      return resp.json()
-    }).then(data => {
-      console.log(data[0])
-      dispatch({type: "resolved", data: data[0]})
-    }).then(() => {
-      fetch(pexelsApiUrl, {
-        headers: {
-          Authorization: pexelsApiKey
-        }
-      }).then(resp => {
-      return resp.json()
-      }).then(data => {
-        handlePexelsResponse(data)
-      })
-    }).catch(() => {
-      dispatch({type: "rejected"})
     })
    }
 
@@ -80,8 +76,6 @@ export default function Dictionary() {
       <button type="submit" className="search-button" disabled={wordInput.length === 0}>Search</button>
     </form>
   );
-
-
 
 
   return (
@@ -106,7 +100,7 @@ export default function Dictionary() {
       : state.status === "resolved" ?
        <Results data={state.results} photos={photos} />
       : state.status === "rejected" ?
-       <div className="error-message"> Sorry, could not find results! please try a different query. </div>
+       <div className="error-message"> {state.error.message}</div>
       : null
       }    
     </div>
