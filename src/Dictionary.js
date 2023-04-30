@@ -24,43 +24,40 @@ export default function Dictionary() {
   const [wordInput, setWordInput] = useState("");
   const [state, dispatch] = React.useReducer(reducer, {status: "idle",results: null, error:null});
   const [photos, setPhotos] = useState(null);
+  const wordInputElem = React.useRef();
 
-
-  function handlePexelsResponse(response) {
-    setPhotos(response.photos);
-  }
-
-  function handleInputChange(e) {
-    setWordInput(e.target.value);
-  }
-
-  function search() {
-    let pexelsApiKey = "Wdrg3QnNJuL73cSqE7AfFqjsYG03OhFDFyoWZVFwvRjeBbl5X09pOyzX";
-    let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${wordInput}&per_page=6`;
-    let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${wordInput}`;
-    dispatch({type: "pending"})
-    fetch(apiUrl).then(async resp => {
-      const data = await resp.json()
-      if (resp.ok) {
-        dispatch({type: "resolved", data: data[0]})
-        fetch(pexelsApiUrl, {
-          headers: {
-            Authorization: pexelsApiKey
-          }
-        }).then(response => {
-        return response.json()
-        }).then(respData => {
-          handlePexelsResponse(respData)
-        })
-      } else {
-        dispatch({type: "rejected", error:data})
-      }
-    })
-   }
+  React.useEffect(() => {
+    if(wordInput) {
+      let pexelsApiKey = "Wdrg3QnNJuL73cSqE7AfFqjsYG03OhFDFyoWZVFwvRjeBbl5X09pOyzX";
+      let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${wordInput}&per_page=6`;
+      let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en_US/${wordInput}`;
+      dispatch({type: "pending"})
+      fetch(apiUrl).then(async resp => {
+        const data = await resp.json()
+        if (resp.ok) {
+          dispatch({type: "resolved", data: data[0]})
+          fetch(pexelsApiUrl, {
+            headers: {
+              Authorization: pexelsApiKey
+            }
+          }).then(response => {
+          return response.json()
+          }).then(respData => {
+            setPhotos(respData.photos);
+          })
+        } else {
+          dispatch({type: "rejected", error:data})
+        }
+      })
+    } 
+  }, [wordInput])
+  
 
   function handleSubmit(event) {
     event.preventDefault();
-    search();
+    if(wordInputElem.current.value.trim().length !== 0) {
+      setWordInput(wordInputElem.current.value);
+    }
   }
 
   let form = (
@@ -70,13 +67,12 @@ export default function Dictionary() {
         placeholder="Type a Word..."
         autoComplete="off"
         className="word-input"
-        onChange={handleInputChange}
+        ref={wordInputElem}
       />{" "}
       {""}
-      <button type="submit" className="search-button" disabled={wordInput.length === 0}>Search</button>
+      <button type="submit" className="search-button">Search</button>
     </form>
   );
-
 
   return (
     <div className="wordSearch">
